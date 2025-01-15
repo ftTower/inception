@@ -14,3 +14,15 @@
 
 - docker image rm -f "image name/id", //delete the image, if the image is running you need to kill it first.
 - docker image kill "name", //stop a running image,
+
+
+
+
+
+
+
+
+# http://localhost:8080/
+
+<!-- docker run --name nginx-container -d -p 8080:80 nginx -->
+
