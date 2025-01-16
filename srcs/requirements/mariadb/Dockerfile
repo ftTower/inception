@@ -1,4 +1,14 @@
 FROM debian:buster
 
-RUN apt update && apt upgrade -y && apt-get install mariadb-server -y
+# Installer MariaDB
+RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-server -y
 
+# Copier les fichiers nécessaires
+COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY conf/script.sh /usr/local/bin/script.sh
+
+# Donner les permissions d'exécution au script
+RUN chmod +x /usr/local/bin/script.sh
+
+# Démarrer MariaDB et exécuter le script
+RUN service mysql start && /usr/local/bin/script.sh
