@@ -10,5 +10,6 @@ COPY conf/script.sh /usr/local/bin/script.sh
 # Donner les permissions d'exécution au script
 RUN chmod +x /usr/local/bin/script.sh
 
-# Démarrer MariaDB et exécuter le script
-RUN service mysql start && /usr/local/bin/script.sh
+EXPOSE 3306
+
+CMD ["/usr/local/bin/script.sh"]

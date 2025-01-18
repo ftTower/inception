@@ -22,7 +22,7 @@
 
 
 
-# http://localhost:8080/
+# https://localhost:8080/
 
 <!-- docker run --name nginx-container -d -p 8080:80 nginx -->
 
