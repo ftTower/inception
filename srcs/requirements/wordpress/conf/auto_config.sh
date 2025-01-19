@@ -1,6 +1,9 @@
 #!/bin/bash
 
-sleep 10
+until mysqladmin ping -h mariadb --silent; do
+    echo "Waiting for database..."
+    sleep 2
+done
 
 wp config create --allow-root \
     --dbname=$SQL_DATABASE \
@@ -9,3 +12,4 @@ wp config create --allow-root \
     --dbhost=mariadb:3306 \
     --path='/var/www/html'
 
+exec php-fpm7.3 --nodaemonize
