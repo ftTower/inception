@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 # Installer MariaDB
 RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-server -y
