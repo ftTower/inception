@@ -1,5 +1,5 @@
 all:
-	@sudo hostsed add 127.0.0.1 tauer.42.fr && echo "successfully added tauer.42.fr to /etc/hosts"
+	@echo "127.0.0.1 tauer.42.fr" | sudo tee -a /etc/hosts && echo "successfully added tauer.42.fr to /etc/hosts"
 	sudo docker compose -f ./srcs/docker-compose.yml up -d
 
 clean:
@@ -8,7 +8,7 @@ clean:
 #	sudo docker system prune -a
 
 fclean: clean
-	@sudo hostsed rm 127.0.0.1 tauer.42.fr && echo "successfully removed tauer.42.fr to /etc/hosts"
+	@sudo sed -i '/127.0.0.1 tauer.42.fr/d' /etc/hosts && echo "successfully removed tauer.42.fr from /etc/hosts"	
 	@if [ -d "/home/tauer/data/wordpress" ]; then \
 	sudo rm -rf /home/tauer/data/wordpress/* && \
 	echo "successfully removed all contents from /home/tauer/data/wordpress/"; \
