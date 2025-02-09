@@ -52,4 +52,15 @@ networks:
 
 volumes:
   mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tauer/data/mariadb
   wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tauer/data/wordpress
+
